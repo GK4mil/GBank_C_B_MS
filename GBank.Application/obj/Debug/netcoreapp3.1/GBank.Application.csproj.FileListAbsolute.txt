@@ -1,0 +1,12 @@
+C:\Users\Kamil\source\repos\GBank\GBank.Application\bin\Debug\netcoreapp3.1\GBank.Application.deps.json
+C:\Users\Kamil\source\repos\GBank\GBank.Application\bin\Debug\netcoreapp3.1\GBank.Application.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Application\bin\Debug\netcoreapp3.1\GBank.Application.pdb
+C:\Users\Kamil\source\repos\GBank\GBank.Application\bin\Debug\netcoreapp3.1\GBank.Domain.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Application\bin\Debug\netcoreapp3.1\GBank.Domain.pdb
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.csprojAssemblyReference.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.AssemblyInfoInputs.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.AssemblyInfo.cs
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.csproj.CoreCompileInputs.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.csproj.CopyComplete
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Application\obj\Debug\netcoreapp3.1\GBank.Application.pdb
