@@ -3,6 +3,8 @@ using JWT.Algorithms;
 using JWT.Builder;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +57,15 @@ namespace GBank.Infrastructure.Services
                  .WithSecret(_secret)
                  .MustVerifySignature()
                  .Decode<IDictionary<string, object>>(token));
+        }
+
+        public async Task<string> GetUsernameFromToken(string token)
+        {
+            token = token.Replace("Bearer ", String.Empty);
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(token);
+            var tokenS = jsonToken as JwtSecurityToken;
+            return await Task.Run(()=>tokenS.Claims.First(claim => claim.Type == "username").Value);
         }
     }
 }

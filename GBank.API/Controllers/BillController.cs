@@ -1,38 +1,43 @@
-﻿using GBank.Application.Functions.Bills.Query;
+﻿using GBank.Application.Functions.UserBill.Query;
 using GBank.Domain.Entities;
+using GBank.Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GBank.API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class BillController : ControllerBase
     {
         private readonly ILogger<BillController> _logger;
 
         private readonly IMediator _mediator;
+        private readonly ITokenService _ts;
 
-        public BillController(ILogger<BillController> logger, IMediator mediator)
+        public BillController(ILogger<BillController> logger, IMediator mediator, ITokenService ts)
         {
             _logger = logger;
 
             _mediator = mediator;
+            _ts = ts;
         }
-        public async Task<OkResult> Index()
+        [HttpGet]
+        public async Task<List<Bill>> Get()
         {
-            return Ok();
+            return await _mediator.
+                Send( new GetBillsOfUserCommand() { username= await _ts.GetUsernameFromToken(Request.Headers["Authorization"]) } );
         }
 
-        [HttpPost("billslist")] 
-        public async Task<ActionResult<List<Bill>>> GetBillsByUserId([FromBody] GetUserBillsQuery query)
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
-            return await _mediator.Send(query);
         }
+
+
     }
 }

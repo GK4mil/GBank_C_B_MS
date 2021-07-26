@@ -14,7 +14,8 @@ using System.Threading.Tasks;
 
 namespace GBank.API.Controllers
 {
-    
+    [Route("api/[controller]")]
+    [ApiController]
     public class TokenController : ControllerBase
     {
         private readonly ILogger<TokenController> _logger;

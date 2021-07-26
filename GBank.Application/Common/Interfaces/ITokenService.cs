@@ -9,5 +9,6 @@ namespace GBank.Infrastructure.Services
         public Task<string> GenerateAccessToken(User user);
         public Task<(string, string)> GenerateRefreshToken(User user);
         public Task<IDictionary<string, object>> VerifyToken(string token);
+        public Task<string> GetUsernameFromToken(string token);
     }
 }

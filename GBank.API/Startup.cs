@@ -23,6 +23,9 @@ using System.Reflection;
 using GBank.Application;
 using Plain.RabbitMQ;
 using RabbitMQ.Client;
+using Microsoft.OpenApi.Models;
+using GBankAdminService.Application.Common.Interfaces;
+using GBankAdminService.Infrastructure.Services;
 
 namespace GBank.API
 {
@@ -41,16 +44,18 @@ namespace GBank.API
             services.AddGBankPersistenceEFServices(Configuration);
 
             services.AddMediatR(typeof(GBank.Application.Functions.Authentication.Command.LoginCommand).GetTypeInfo().Assembly);
-            services.AddSingleton<ITokenService,TokenService>();
+            services.AddSingleton<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
-           
+            services.AddSingleton<IPasswordHashService, PasswordHashService>();
+
 
 
             services.AddControllers();
 
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(builder => {
+                options.AddDefaultPolicy(builder =>
+                {
                     builder.WithOrigins("*");
                     builder.AllowAnyMethod();
                     builder.AllowAnyHeader();
@@ -96,13 +101,20 @@ namespace GBank.API
             })
             .AddJwtBearer(jwtBearerOptions => options(jwtBearerOptions, "access"))
             .AddJwtBearer("refresh", jwtBearerOptions => options(jwtBearerOptions, "refresh"));
-        //Rabbit MQ
+
+            //Rabbit MQ
             services.AddSingleton<IConnectionProvider>(new ConnectionProvider("amqp://guest:guest@192.168.0.3:5672"));
             services.AddSingleton<Plain.RabbitMQ.IPublisher>(
                 x => new Publisher(x.GetService<IConnectionProvider>(),
                 "transfer_exchange", ExchangeType.Topic));
-        
-            //Rabbit MQ         
+
+            //Rabbit MQ   
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTestService", Version = "v1", });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +136,14 @@ namespace GBank.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestService");
             });
         }
     }

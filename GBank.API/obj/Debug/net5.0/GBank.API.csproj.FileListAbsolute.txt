@@ -67,3 +67,8 @@ C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Microsoft.EntityFra
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Plain.RabbitMQ.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\RabbitMQ.Client.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.MvcApplicationPartsAssemblyInfo.cs

@@ -1,13 +1,14 @@
-﻿using GBank.Application.Common.Interfaces;
-using GBank.Application.Common.Models;
-using GBank.Domain.Entities;
+﻿using GBank.Domain.Entities;
 using GBank.Infrastructure.Persistence;
 using System;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GBank.Application.Functions.Authentication.Command;
+using GBankAdminService.Infrastructure.Services;
+using GBankAdminService.Application.Common.Interfaces;
+using GBank.Application.Common.Interfaces;
+using GBank.Application.Common.Models;
 
 namespace GBank.Infrastructure.Services
 {
@@ -16,11 +17,13 @@ namespace GBank.Infrastructure.Services
 
         private readonly GBankDbContext _context;
         private readonly ITokenService _ts;
+        private readonly IPasswordHashService hs;
 
-        public UserService(GBankDbContext context, ITokenService ts)
+        public UserService(GBankDbContext context, ITokenService ts, IPasswordHashService hs)
         {
             this._context = context;
             _ts = ts;
+            this.hs = hs;
         }
 
       
@@ -47,7 +50,8 @@ namespace GBank.Infrastructure.Services
 
             if (user != null)
             {
-                validPassword=user.password == authentication.password;
+                validPassword = hs.Verify(authentication.password, user.password);
+                //validPassword=user.password == authentication.password;
             }
 
             if (validPassword)

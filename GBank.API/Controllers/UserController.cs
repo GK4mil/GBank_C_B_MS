@@ -5,6 +5,7 @@ using GBank.Application.Functions.Transfer.Command;
 using GBank.Application.Functions.Users.Command;
 using GBank.Application.Functions.Users.Query;
 using GBank.Domain.Entities;
+using GBank.Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -17,31 +18,29 @@ using System.Threading.Tasks;
 
 namespace GBank.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
 
         private readonly IMediator _mediator;
-       
+        private readonly ITokenService _ts;
 
-        public UserController(ILogger<UserController> logger, IUserService userService, IMediator mediator)
+        public UserController(ILogger<UserController> logger, IUserService userService, IMediator mediator, ITokenService ts)
         {
             _logger = logger;
-            
             _mediator = mediator;
+            _ts = ts;
         }
-        public async Task<OkResult> Index()
-        {
-            return Ok();
-        }
+
 
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<ActionResult<List<User>>> Get()
-        {          
-            return await _mediator.Send(new GetAllUsersQuery());
+        public async Task<string> Get()
+        {
+            return await _ts.GetUsernameFromToken(Request.Headers["Authorization"]);
+           // return await _mediator.Send(new GetAllUsersQuery());
         }
 
       /*  [HttpGet("{userId}", Name = "GetOne")]
@@ -49,7 +48,7 @@ namespace GBank.API.Controllers
         {
             return _userService.Get(Int32.Parse(userId));
         }
-      */
+      
         [HttpPost("create")]
         public async Task<ActionResult<int>> CreateUser ([FromBody] AddUserCommand command)
         {
@@ -58,7 +57,7 @@ namespace GBank.API.Controllers
             else
                 return BadRequest(ModelState);
         }
-
+        */
         [HttpPost("maketransfer")]
         public async Task<ActionResult<String>> MakeTransfer([FromBody] MakeTransferCommand command)
         {

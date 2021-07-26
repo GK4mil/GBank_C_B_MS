@@ -23,9 +23,15 @@ namespace GBank.Infrastructure.Repositories.EF
             //return await _dbContext.Bills.Where(x => x.Users.Where(y=>y.ID == userId)).Include(c=>c.User).ToListAsync();
         }
 
-        public async Task<List<Bill>> FindBybillNumber(String billnr)
+        public async Task<List<Bill>> FindByBillNumber(String billnr)
         {
             return await _dbContext.Bills.Where(x => x.billNumber == billnr).ToListAsync();
+        }
+
+        public async Task<List<Bill>> GetBillsOfUser(string username)
+        {
+            return (List<Bill>)await Task.Run(() => (_dbContext.Users.Where(x => x.Username == username).Include(b => b.Bills).ToList()).
+                FirstOrDefault().Bills.ToList());
         }
     }
 }
