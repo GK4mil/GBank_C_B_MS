@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GBank.Application.Contracts.Persistence;
+using GBank.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,37 @@ namespace GBank.API.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
+        private readonly INewsRepository nr;
+
+        public NewsController(INewsRepository nr)
+        {
+            this.nr = nr;
+        }
         // GET: api/<NewsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<News>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return (List<News>)await nr.GetAllAsync();
         }
 
         // GET api/<NewsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<News> Get(int id)
         {
-            return "value";
+            return await nr.GetByIdAsync(id);
+        }
+        [HttpGet("GetSomeCount")]
+        public async Task<List<News>> GetSomeCount(int count)
+        {
+            return await nr.GetSomeCountOfNews(count);
         }
 
-        // POST api/<NewsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<int> Add(News n)
         {
+            
+            return (await nr.AddAsync(n)).ID;
         }
 
-        // PUT api/<NewsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<NewsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

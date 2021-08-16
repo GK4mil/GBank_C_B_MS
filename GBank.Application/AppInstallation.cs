@@ -13,7 +13,7 @@ namespace GBank.Application
     {
         public static IServiceCollection AppGBankApplication(this IServiceCollection services)
         {
-            // services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(typeof(GBank.Application.Functions.Authentication.Command.LoginCommand).GetTypeInfo().Assembly);
             
             return services;

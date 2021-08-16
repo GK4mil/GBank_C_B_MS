@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZJrr7qymN9+9gy18kCYLsne0bFnao7elbPSvTj0Scw/ks6iyYwpA0Y8tw6KLIb+mn3ueWKmKxdS95kkc7gQzOQ==",
+  "dgSpecHash": "71DgykDUomBl0e0GF6O13yF8Wqd7aTLy4K1eknwWffRJHIG/2rtmpkff9oRJw79B720ACHmuLAkllWTWKEzXJg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kamil\\source\\repos\\GBank\\GBank.Infrastructure\\GBank.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kamil\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\fluentvalidation\\10.0.0\\fluentvalidation.10.0.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\jwt\\8.1.3\\jwt.8.1.3.nupkg.sha512",
@@ -83,7 +84,7 @@
     "C:\\Users\\Kamil\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "oXHbgAfqjiuxDZ+Jn72v9xWgR27NuuXpdlZDziZywS7qJauFI2fnDxvB10PLhnBaeekkWBcVGGGUN6YEQcqXxw==",
+  "dgSpecHash": "/xhDV+UuzvE7RFSej2cNLjutqBpDdxJZhwovn8i5BNSJ3AMt5VTOHc+53jGkFwHXUHafqHB8wvjEr/NswX5YxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kamil\\source\\repos\\GBank\\GBank.Application\\GBank.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kamil\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\fluentvalidation\\10.0.0\\fluentvalidation.10.0.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\Kamil\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
@@ -14,6 +16,7 @@
     "C:\\Users\\Kamil\\.nuget\\packages\\plain.rabbitmq\\0.0.0.4\\plain.rabbitmq.0.0.0.4.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Kamil\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"

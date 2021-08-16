@@ -8,7 +8,6 @@ C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\GBank.Application.d
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\GBank.Domain.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\GBank.Infrastructure.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\GBank.Domain.pdb
-C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.csprojAssemblyReference.cache
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.AssemblyInfoInputs.cache
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.AssemblyInfo.cs
@@ -72,3 +71,6 @@ C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetC
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.csproj.AssemblyReference.cache

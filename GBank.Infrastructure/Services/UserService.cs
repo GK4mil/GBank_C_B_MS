@@ -44,7 +44,7 @@ namespace GBank.Infrastructure.Services
         public Tokens Login(Authentication authentication)
         {
 
-            User user = _context.Users.Where(u => u.Username == authentication.username).FirstOrDefault();
+            User user = _context.Users.Where(u => u.Username == authentication.username &&u.active==true).FirstOrDefault();
                 
             bool validPassword = false;
 
@@ -62,15 +62,15 @@ namespace GBank.Infrastructure.Services
                     user.RefreshTokensList = new List<RefreshTokens>();
 
                 var RT = new RefreshTokens();
-                RT.RefreshToken = refreshToken.Result.Item1;
+                RT.RefreshToken = refreshToken.Result.Item2;
                 user.RefreshTokensList.Add(RT);
                 _context.SaveChanges();
 
-                Update(user.ID.ToString(), user);
+                // Update(user.ID.ToString(), user);
                 return new Tokens
                 {
                     AccessToken = _ts.GenerateAccessToken(user).Result,
-                    RefreshToken = refreshToken.Result.Item2
+                    RefreshToken = RT.RefreshToken
                 };
             }
             else
@@ -83,7 +83,7 @@ namespace GBank.Infrastructure.Services
         public Tokens Refresh(Claim userClaim, String refreshTokenRequest)
         {
             refreshTokenRequest = refreshTokenRequest.Replace("Bearer ", "");
-            User user = _context.Users.Where(x => x.Username == userClaim.Value).FirstOrDefault();
+            User user = _context.Users.Where(x => x.Username == userClaim.Value &&x.active==true).FirstOrDefault();
             RefreshTokens tokencount = _context.RefreshTokens.Where(x => x.RefreshToken == refreshTokenRequest).FirstOrDefault();
 
             if (user == null)
@@ -135,17 +135,17 @@ namespace GBank.Infrastructure.Services
             _context.SaveChanges();
         }
 
-        public void Remove(User userIn)
+        public async void Remove(User userIn)
         {
             //context.Users.DeleteOne(user => user.Id == userIn.Id);
             _context.Users.Remove(_context.Users.Where<User>(user => user.ID == userIn.ID).ToArray<User>()[0]);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove(string id)
+        public async void Remove(string id)
         {
             _context.Users.Remove((_context.Users.Where<User>(user => user.ID == Int32.Parse(id))).ToArray<User>()[0]);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

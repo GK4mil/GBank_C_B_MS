@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GBank.Infrastructure.Persistence
 {
@@ -24,11 +27,33 @@ namespace GBank.Infrastructure.Persistence
         public DbSet<User> Users { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<RefreshTokens> RefreshTokens { get; set; }
+        public DbSet<News> News { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
             optionsBuilder.UseSqlServer("Server=192.168.0.3;Database=gabank;User Id=sa;Password=1qaz@WSX3edc;");
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken ct = new CancellationToken())
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e => e.Entity is News && (
+                        e.State == EntityState.Added
+                        || e.State == EntityState.Modified));
+
+            foreach (var entityEntry in entries)
+            {
+                ((News)entityEntry.Entity).date = DateTime.Now;
+
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((News)entityEntry.Entity).date = DateTime.Now;
+                }
+            }
+
+            return await base.SaveChangesAsync();
         }
 
         public static GBankDbContext Create()

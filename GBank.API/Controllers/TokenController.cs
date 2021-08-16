@@ -49,12 +49,12 @@ namespace GBank.API.Controllers
             //Claim refreshtoken = User.Claims.FirstOrDefault(x => x.Type == "refresh");
             Claim username = User.Claims.FirstOrDefault(x => x.Type == "username");
 
-            Request.Headers.TryGetValue("Authorization", out var refreshTockenValue);
+            Request.Headers.TryGetValue("Authorization", out var refreshTokenValue);
             try
             {
 
                 //przekazac string zamiast claim
-                return Ok(_userService.Refresh(username, refreshTockenValue));
+                return Ok(_userService.Refresh(username, refreshTokenValue));
             }
             catch (Exception e)
             {

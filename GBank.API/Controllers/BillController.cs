@@ -1,4 +1,5 @@
 ﻿using GBank.Application.Functions.UserBill.Query;
+using GBank.Application.ModelMapping;
 using GBank.Domain.Entities;
 using GBank.Infrastructure.Services;
 using MediatR;
@@ -27,7 +28,7 @@ namespace GBank.API.Controllers
             _ts = ts;
         }
         [HttpGet]
-        public async Task<List<Bill>> Get()
+        public async Task<List<BillToFront>> Get()
         {
             return await _mediator.
                 Send( new GetBillsOfUserCommand() { username= await _ts.GetUsernameFromToken(Request.Headers["Authorization"]) } );

@@ -18,6 +18,8 @@ namespace GBank.Domain.Entities
         public string firstname { get; set; }
         public string lastname { get; set; }
 
+        public bool active { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<RefreshTokens> RefreshTokensList { get; set; }
 

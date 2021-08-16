@@ -1,4 +1,6 @@
-﻿using GBank.Application.Contracts.Persistence;
+﻿using AutoMapper;
+using GBank.Application.Contracts.Persistence;
+using GBank.Application.ModelMapping;
 using GBank.Domain.Entities;
 using MediatR;
 using System.Collections.Generic;
@@ -8,19 +10,21 @@ using System.Threading.Tasks;
 
 namespace GBank.Application.Functions.UserBill.Query
 {
-    public class GetBillsOfUserCommandHandler : IRequestHandler<GetBillsOfUserCommand, List<Bill>>
+    public class GetBillsOfUserCommandHandler : IRequestHandler<GetBillsOfUserCommand, List<BillToFront>>
     {
         private readonly IBillRepository _br;
 
-        public GetBillsOfUserCommandHandler(IBillRepository br)
+        public GetBillsOfUserCommandHandler(IBillRepository br, IMapper mapper)
         {
             _br = br;
-            
+            Mapper = mapper;
         }
 
-        public async Task<List<Bill>> Handle(GetBillsOfUserCommand request, CancellationToken cancellationToken)
+        public IMapper Mapper { get; }
+
+        public async Task<List<BillToFront>> Handle(GetBillsOfUserCommand request, CancellationToken cancellationToken)
         {
-            return await _br.GetBillsOfUser(request.username);
+            return Mapper.Map<List<Bill>, List<BillToFront>>(await _br.GetBillsOfUser(request.username));
         }
     }
 }

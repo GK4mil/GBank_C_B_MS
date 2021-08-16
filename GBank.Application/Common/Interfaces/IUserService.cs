@@ -12,7 +12,7 @@ namespace GBank.Application.Common.Interfaces
         public void Remove(string id);
         public void Remove(User userIn);
         public void Update(string id, User userIn);
-        public Tokens Refresh(Claim userClaim, String refreshClaim);
+        public  Tokens Refresh(Claim userClaim, String refreshClaim);
         public Tokens Login(Authentication authentication);
         public List<User> Get();
 

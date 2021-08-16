@@ -82,6 +82,9 @@ namespace GBank.Infrastructure.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("active")
+                        .HasColumnType("bit");
+
                     b.Property<string>("firstname")
                         .HasColumnType("nvarchar(max)");
 

@@ -31,6 +31,7 @@ namespace GBank.API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "mycorspolicy";
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IConfiguration Configuration { get; }
@@ -41,26 +42,27 @@ namespace GBank.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                                  });
+            });
+
             services.AddGBankPersistenceEFServices(Configuration);
 
             services.AddMediatR(typeof(GBank.Application.Functions.Authentication.Command.LoginCommand).GetTypeInfo().Assembly);
             services.AddSingleton<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
             services.AddSingleton<IPasswordHashService, PasswordHashService>();
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.WithOrigins("*");
-                    builder.AllowAnyMethod();
-                    builder.AllowAnyHeader();
-                });
-            });
+            
 
 
             JwtBearerOptions options(JwtBearerOptions jwtBearerOptions, string audience)
@@ -129,16 +131,17 @@ namespace GBank.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors();
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-
+            
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
