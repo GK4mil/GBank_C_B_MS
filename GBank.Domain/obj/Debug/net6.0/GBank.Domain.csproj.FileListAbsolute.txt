@@ -1,0 +1,12 @@
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\bin\Debug\net6.0\GBank.Domain.deps.json
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\bin\Debug\net6.0\GBank.Domain.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\bin\Debug\net6.0\ref\GBank.Domain.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\bin\Debug\net6.0\GBank.Domain.pdb
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.csproj.AssemblyReference.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.AssemblyInfoInputs.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.AssemblyInfo.cs
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\ref\GBank.Domain.dll
+C:\Users\Kamil\source\repos\GBank\GBank.Domain\obj\Debug\net6.0\GBank.Domain.pdb

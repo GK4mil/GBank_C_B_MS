@@ -34,6 +34,14 @@ namespace GBank.API.Controllers
                 Send( new GetBillsOfUserCommand() { username= await _ts.GetUsernameFromToken(Request.Headers["Authorization"]) } );
         }
 
+        // GET api/<NewsController>/5
+      /*  [HttpGet("{id}")]
+        public async Task<News> Get(int id)
+        {
+            return await nr.GetByIdAsync(id);
+        }
+      */
+
         [HttpPost]
         public void Post([FromBody] string value)
         {

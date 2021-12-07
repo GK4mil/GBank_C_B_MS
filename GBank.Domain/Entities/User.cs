@@ -25,8 +25,7 @@ namespace GBank.Domain.Entities
 
         [JsonIgnore]
         public virtual ICollection<Bill> Bills { get; set; }
-
-        
+               
 
     }
 }

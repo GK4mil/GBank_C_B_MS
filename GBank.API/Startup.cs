@@ -26,6 +26,7 @@ using RabbitMQ.Client;
 using Microsoft.OpenApi.Models;
 using GBankAdminService.Application.Common.Interfaces;
 using GBankAdminService.Infrastructure.Services;
+using Nest;
 
 namespace GBank.API
 {
@@ -58,6 +59,8 @@ namespace GBank.API
             services.AddScoped<IUserService, UserService>();
             services.AddSingleton<IPasswordHashService, PasswordHashService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            var settings = new ConnectionSettings(new Uri(@"http://192.168.5.3:9200"));
+            services.AddSingleton<IElasticClient>(new ElasticClient(settings));
 
 
             services.AddControllers();
@@ -105,7 +108,7 @@ namespace GBank.API
             .AddJwtBearer("refresh", jwtBearerOptions => options(jwtBearerOptions, "refresh"));
 
             //Rabbit MQ
-            services.AddSingleton<IConnectionProvider>(new ConnectionProvider("amqp://guest:guest@192.168.0.3:5672"));
+            services.AddSingleton<IConnectionProvider>(new ConnectionProvider("amqp://guest:guest@192.168.5.3:5672"));
             services.AddSingleton<Plain.RabbitMQ.IPublisher>(
                 x => new Publisher(x.GetService<IConnectionProvider>(),
                 "transfer_exchange", ExchangeType.Topic));
@@ -117,6 +120,14 @@ namespace GBank.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTestService", Version = "v1", });
             });
+
+            //Elastic
+            var settings_elastic = new ConnectionSettings(new Uri(@"http://192.168.5.3:9200"));
+            settings_elastic.DisableDirectStreaming();
+            services.AddSingleton<IElasticClient>(new ElasticClient(settings_elastic));
+
+
+            //Elastic
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

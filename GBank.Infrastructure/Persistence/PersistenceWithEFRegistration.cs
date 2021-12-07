@@ -27,8 +27,9 @@ namespace GBank.Infrastructure.Persistence
                 services.AddScoped<IRefreshTokensRepository, RefreshTokensRepository>();
                 services.AddScoped<IBillRepository, BillRepository>();
                 services.AddScoped<INewsRepository, NewsRepository>();
+                services.AddScoped<IBillTransactionsRepository, BillTransactionsRepository>();
 
-                //services.AddScoped<IPostRepository, PostRepository>();
+              
 
                 return services;
             }

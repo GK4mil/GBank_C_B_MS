@@ -52,6 +52,53 @@ namespace GBank.Infrastructure.Migrations
                     b.ToTable("Bills");
                 });
 
+            modelBuilder.Entity("GBank.Domain.Entities.BillTransactions", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("billID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("datetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("direction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("transactionid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("billID");
+
+                    b.ToTable("BillTransactions");
+                });
+
+            modelBuilder.Entity("GBank.Domain.Entities.News", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("News");
+                });
+
             modelBuilder.Entity("GBank.Domain.Entities.RefreshTokens", b =>
                 {
                     b.Property<int>("ID")
@@ -114,6 +161,15 @@ namespace GBank.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GBank.Domain.Entities.BillTransactions", b =>
+                {
+                    b.HasOne("GBank.Domain.Entities.Bill", "bill")
+                        .WithMany("Transactions")
+                        .HasForeignKey("billID");
+
+                    b.Navigation("bill");
+                });
+
             modelBuilder.Entity("GBank.Domain.Entities.RefreshTokens", b =>
                 {
                     b.HasOne("GBank.Domain.Entities.User", "User")
@@ -121,6 +177,11 @@ namespace GBank.Infrastructure.Migrations
                         .HasForeignKey("UserID");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GBank.Domain.Entities.Bill", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("GBank.Domain.Entities.User", b =>

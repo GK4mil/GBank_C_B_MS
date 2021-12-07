@@ -11,13 +11,15 @@ namespace GBank.Domain.Entities
         public Bill()
         {
             this.Users = new Collection<User>();
-            
-            
+            this.Transactions = new Collection<BillTransactions>();
+
         }
         public int ID { get; set; }
         [Column(TypeName = "decimal(18, 2)")] public Decimal balance { get; set; }
 
 		public String billNumber { get; set; }
+
+        public virtual ICollection<BillTransactions> Transactions { get; set; }
         public virtual ICollection<User> Users { get; set; }
 
     }

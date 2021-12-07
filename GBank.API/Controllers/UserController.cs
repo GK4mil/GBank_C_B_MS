@@ -59,9 +59,13 @@ namespace GBank.API.Controllers
         }
         */
         [HttpPost("maketransfer")]
-        public async Task<ActionResult<String>> MakeTransfer([FromBody] MakeTransferCommand command)
+        public async Task<ActionResult> MakeTransfer([FromBody] MakeTransferCommand command)
         {
-                return await _mediator.Send(command);         
+            
+            
+              if(  await _mediator.Send(command))
+                return Ok();
+            return BadRequest();
         }
 
         /* [HttpPut("{userId}")]

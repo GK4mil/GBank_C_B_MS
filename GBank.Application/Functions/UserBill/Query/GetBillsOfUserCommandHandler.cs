@@ -13,6 +13,7 @@ namespace GBank.Application.Functions.UserBill.Query
     public class GetBillsOfUserCommandHandler : IRequestHandler<GetBillsOfUserCommand, List<BillToFront>>
     {
         private readonly IBillRepository _br;
+        private IMapper Mapper { get; }
 
         public GetBillsOfUserCommandHandler(IBillRepository br, IMapper mapper)
         {
@@ -20,7 +21,7 @@ namespace GBank.Application.Functions.UserBill.Query
             Mapper = mapper;
         }
 
-        public IMapper Mapper { get; }
+        
 
         public async Task<List<BillToFront>> Handle(GetBillsOfUserCommand request, CancellationToken cancellationToken)
         {

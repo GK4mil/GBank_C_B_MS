@@ -13,6 +13,7 @@ namespace GBank.API.Mapper
         public MappingProfile()
         {
             CreateMap < Bill,BillToFront>();
+            CreateMap<BillTransactions, BillTransactionToFront>();
         }
 
         

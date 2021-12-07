@@ -28,11 +28,12 @@ namespace GBank.Infrastructure.Persistence
         public DbSet<Bill> Bills { get; set; }
         public DbSet<RefreshTokens> RefreshTokens { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<BillTransactions> BillTransactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer("Server=192.168.0.3;Database=gabank;User Id=sa;Password=1qaz@WSX3edc;");
+            optionsBuilder.UseSqlServer("Server=192.168.5.3;Database=gabank;User Id=sa;Password=1qaz@WSX3edc;");
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken ct = new CancellationToken())

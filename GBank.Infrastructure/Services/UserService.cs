@@ -9,6 +9,8 @@ using GBankAdminService.Infrastructure.Services;
 using GBankAdminService.Application.Common.Interfaces;
 using GBank.Application.Common.Interfaces;
 using GBank.Application.Common.Models;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBank.Infrastructure.Services
 {
@@ -44,8 +46,8 @@ namespace GBank.Infrastructure.Services
         public Tokens Login(Authentication authentication)
         {
 
-            User user = _context.Users.Where(u => u.Username == authentication.username &&u.active==true).FirstOrDefault();
-                
+            User user = _context.Users.Where(u => u.Username == authentication.username && u.active == true).Include(u => u.RefreshTokensList).FirstOrDefault();
+
             bool validPassword = false;
 
             if (user != null)
@@ -63,9 +65,10 @@ namespace GBank.Infrastructure.Services
 
                 var RT = new RefreshTokens();
                 RT.RefreshToken = refreshToken.Result.Item2;
+                FlushOldRTokens(user);
                 user.RefreshTokensList.Add(RT);
                 _context.SaveChanges();
-
+              
                 // Update(user.ID.ToString(), user);
                 return new Tokens
                 {
@@ -83,7 +86,7 @@ namespace GBank.Infrastructure.Services
         public Tokens Refresh(Claim userClaim, String refreshTokenRequest)
         {
             refreshTokenRequest = refreshTokenRequest.Replace("Bearer ", "");
-            User user = _context.Users.Where(x => x.Username == userClaim.Value &&x.active==true).FirstOrDefault();
+            User user = _context.Users.Where(x => x.Username == userClaim.Value &&x.active==true).Include(u => u.RefreshTokensList).FirstOrDefault();
             RefreshTokens tokencount = _context.RefreshTokens.Where(x => x.RefreshToken == refreshTokenRequest).FirstOrDefault();
 
             if (user == null)
@@ -107,7 +110,7 @@ namespace GBank.Infrastructure.Services
 
                 Update(user.ID.ToString(), user);
 
-
+                FlushOldRTokens(user);
                 return new Tokens
                 {
                     AccessToken = _ts.GenerateAccessToken(user).Result,
@@ -119,6 +122,32 @@ namespace GBank.Infrastructure.Services
                 throw new System.Exception("Refresh token incorrect");
             }
 
+        }
+
+        private void FlushOldRTokens(User user)
+        {
+            List<RefreshTokens> result = new List<RefreshTokens>();
+            foreach (var item in user.RefreshTokensList)
+            {
+                if (_isEmptyOrInvalid(item.RefreshToken))
+                    result.Add(item);
+            }
+            foreach(var item in result)
+            {
+                _context.RefreshTokens.Remove(_context.RefreshTokens.Where(x => x.RefreshToken == item.RefreshToken).First());
+            }
+            _context.SaveChanges();
+            
+        }
+        private bool _isEmptyOrInvalid(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return true;
+            }
+
+            var jwtToken = new JwtSecurityToken(token);
+            return (jwtToken == null) || (jwtToken.ValidFrom > DateTime.UtcNow) || (jwtToken.ValidTo < DateTime.UtcNow);
         }
 
         public void Update(string id, User userIn)

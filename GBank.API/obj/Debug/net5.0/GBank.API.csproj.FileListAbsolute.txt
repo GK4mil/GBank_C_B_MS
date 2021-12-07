@@ -12,7 +12,6 @@ C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.Generated
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.AssemblyInfoInputs.cache
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.AssemblyInfo.cs
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\staticwebassets\GBank.API.StaticWebAssets.Manifest.cache
-C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\staticwebassets\GBank.API.StaticWebAssets.xml
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\scopedcss\bundle\GBank.API.styles.css
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.RazorTargetAssemblyInfo.cache
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
@@ -74,3 +73,6 @@ C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.MvcApplic
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Kamil\source\repos\GBank\GBank.API\obj\Debug\net5.0\GBank.API.csproj.AssemblyReference.cache
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Elasticsearch.Net.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\Nest.dll
+C:\Users\Kamil\source\repos\GBank\GBank.API\bin\Debug\net5.0\GBank.API.StaticWebAssets.xml
